@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		95E10D2221715554000922C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E10D2121715554000922C9 /* AppDelegate.swift */; };
-		95E10D2421715554000922C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E10D2321715554000922C9 /* ViewController.swift */; };
 		95E10D2721715554000922C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E10D2521715554000922C9 /* Main.storyboard */; };
 		95E10D2921715555000922C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95E10D2821715555000922C9 /* Assets.xcassets */; };
 		95E10D2C21715555000922C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E10D2A21715555000922C9 /* LaunchScreen.storyboard */; };
@@ -36,7 +35,6 @@
 /* Begin PBXFileReference section */
 		95E10D1E21715554000922C9 /* Insta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E10D2121715554000922C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		95E10D2321715554000922C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		95E10D2621715554000922C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95E10D2821715555000922C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95E10D2B21715555000922C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -97,12 +95,8 @@
 		95E10D2021715554000922C9 /* Insta */ = {
 			isa = PBXGroup;
 			children = (
-				95E10D2321715554000922C9 /* ViewController.swift */,
 				95E10D2521715554000922C9 /* Main.storyboard */,
-				95E10D2121715554000922C9 /* AppDelegate.swift */,
-				95E10D2821715555000922C9 /* Assets.xcassets */,
-				95E10D2A21715555000922C9 /* LaunchScreen.storyboard */,
-				95E10D2D21715555000922C9 /* Info.plist */,
+				95E10D4F21715667000922C9 /* Resources */,
 			);
 			path = Insta;
 			sourceTree = "<group>";
@@ -123,6 +117,17 @@
 				95E10D4321715555000922C9 /* Info.plist */,
 			);
 			path = InstaUITests;
+			sourceTree = "<group>";
+		};
+		95E10D4F21715667000922C9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				95E10D2121715554000922C9 /* AppDelegate.swift */,
+				95E10D2821715555000922C9 /* Assets.xcassets */,
+				95E10D2A21715555000922C9 /* LaunchScreen.storyboard */,
+				95E10D2D21715555000922C9 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +261,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95E10D2421715554000922C9 /* ViewController.swift in Sources */,
 				95E10D2221715554000922C9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,7 +438,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H9L7P6ZCN6;
-				INFOPLIST_FILE = Insta/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Insta/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,7 +456,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H9L7P6ZCN6;
-				INFOPLIST_FILE = Insta/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Insta/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
