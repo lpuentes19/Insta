@@ -45,7 +45,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ouj-gR-0JS">
                                         <rect key="frame" x="7.5" y="0.0" width="300" height="40"/>
-                                        <color key="backgroundColor" white="0.74975920376712324" alpha="0.85260595034246578" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.59869970034246578" alpha="0.85260595034246578" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="7yf-N5-ssP"/>
                                             <constraint firstAttribute="width" constant="300" id="kSG-yi-qdm"/>
@@ -60,7 +60,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDp-DS-Lhb">
                                         <rect key="frame" x="82.5" y="85" width="150" height="45"/>
-                                        <color key="backgroundColor" white="0.74681613869863017" alpha="0.85199058219178081" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.60019798801369861" alpha="0.85199058219178081" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="6L7-vz-13x"/>
                                             <constraint firstAttribute="height" constant="45" id="Qkt-Rn-1fu"/>
