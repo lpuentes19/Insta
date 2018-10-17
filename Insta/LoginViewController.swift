@@ -123,8 +123,8 @@ class LoginViewController: UIViewController {
         
         let lineAnimation = CABasicAnimation(keyPath: "strokeEnd")
         lineAnimation.fromValue = 0
-        lineAnimation.toValue = 1.5
-        lineAnimation.duration = 3.7
+        lineAnimation.toValue = 1
+        lineAnimation.duration = 2.5
         loginBorder.add(lineAnimation, forKey: "Login Button Animation")
         createAcctBorder.add(lineAnimation, forKey: "Password Button Animation")
     }
