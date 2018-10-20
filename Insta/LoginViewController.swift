@@ -25,7 +25,12 @@ class LoginViewController: UIViewController {
         
         setupUI()
         animateTitleLabel()
-        animateEmailPasswordLines()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        animateTextFieldLayer()
         animateButtonBorder()
     }
     
@@ -61,7 +66,7 @@ class LoginViewController: UIViewController {
     
     // Animating the email and passwrd line
     // By having a sublayer line draw itself
-    func animateEmailPasswordLines() {
+    func animateTextFieldLayer() {
         
         let emailTextLayer = CALayer()
         emailTextLayer.frame = CGRect(x: 0, y: emailTextField.frame.maxY, width: emailTextField.frame.size.width, height: 0.8)
@@ -77,7 +82,7 @@ class LoginViewController: UIViewController {
         passwordTextLayer.frame = CGRect(x: 0, y: emailTextField.frame.maxY, width: passwordTextField.frame.size.width, height: 0.8)
         // Need to specify in order for animation
         // to move from left to right
-        passwordTextLayer.position = CGPoint(x: 0, y: emailTextField.frame.maxY)
+        passwordTextLayer.position = CGPoint(x: 0, y: passwordTextField.bounds.maxY)
         passwordTextLayer.anchorPoint = CGPoint(x: 0, y: 0)
         
         passwordTextLayer.backgroundColor = UIColor.white.cgColor
