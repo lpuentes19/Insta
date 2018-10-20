@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
         animateButtonBorder()
     }
     
-    // Setting up the UI Elements
+    // Configuring up the UI Elements
     func setupUI() {
         
         emailTextField.backgroundColor = .clear
@@ -107,7 +107,7 @@ class LoginViewController: UIViewController {
         loginBorder.lineCap = CAShapeLayerLineCap.round
         loginButton.layer.addSublayer(loginBorder)
         
-        let lineAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        let lineAnimation = CABasicAnimation(keyPath: "opacity")
         lineAnimation.fromValue = 0
         lineAnimation.toValue = 1
         lineAnimation.duration = 2.5

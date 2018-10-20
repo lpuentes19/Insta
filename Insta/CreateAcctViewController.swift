@@ -22,6 +22,12 @@ class CreateAcctViewController: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+            animateTextFieldLayer()
+    }
+    
+    // Configuring the UI elements
     func setupUI() {
         placeholderImageView.layer.cornerRadius = 60
         placeholderImageView.layer.borderWidth = 1
@@ -44,6 +50,26 @@ class CreateAcctViewController: UIViewController {
         passwordTextField.tintColor = .white
         passwordTextField.borderStyle = .none
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+    }
+    
+    // Animating the email and passwrd line
+    // By having a sublayer line draw itself
+    @objc func animateTextFieldLayer() {
+        let usernameLayer = CALayer()
+        
+        usernameLayer.frame = CGRect(x: 0, y: self.usernameTextField.frame.maxY, width: self.usernameTextField.frame.size.width, height: 0.8)
+        
+        usernameLayer.position = CGPoint(x: 0, y: self.usernameTextField.frame.maxY)
+        usernameLayer.anchorPoint = CGPoint(x: 0, y: 0)
+        
+        usernameLayer.backgroundColor = UIColor.white.cgColor
+        self.usernameTextField.layer.addSublayer(usernameLayer)
+        
+        let lineAnimation = CABasicAnimation(keyPath: "bounds.size.width")
+        lineAnimation.fromValue = 0
+        lineAnimation.toValue = self.usernameTextField.bounds.size.width
+        lineAnimation.duration = 2.5
+        usernameLayer.add(lineAnimation, forKey: "Username Line Animation")
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
