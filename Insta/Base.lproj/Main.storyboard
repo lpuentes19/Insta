@@ -103,10 +103,10 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Acct View Controller-->
         <scene sceneID="ziD-Gn-llR">
             <objects>
-                <viewController id="lrK-i8-4ke" sceneMemberID="viewController">
+                <viewController id="lrK-i8-4ke" customClass="CreateAcctViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AHI-Qe-0dm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,6 +157,7 @@
                                         </state>
                                         <connections>
                                             <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="plE-Yb-2rY"/>
+                                            <action selector="signUpButtonTapped:" destination="lrK-i8-4ke" eventType="touchUpInside" id="mJK-j3-fIy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djw-bP-yGj">
@@ -189,6 +190,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2dM-vs-N2m"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="JXP-K3-ccY" id="fhi-26-ipf"/>
+                        <outlet property="passwordTextField" destination="B4E-So-09D" id="4r6-N5-js3"/>
+                        <outlet property="placeholderImageView" destination="gnq-dJ-2gt" id="vUy-Vc-e4e"/>
+                        <outlet property="signUpButton" destination="xOq-Mn-fxY" id="JAV-bX-Acb"/>
+                        <outlet property="usernameTextField" destination="yH5-HH-Z75" id="eNc-Ne-BVH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CoI-BU-4Va" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
