@@ -20,8 +20,8 @@ class CreateAcctViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
-        //Timer.scheduledTimer(timeInterval: 0.30, target: self, selector: #selector(animateTextFieldLayer), userInfo: nil, repeats: false)
-        //Timer.scheduledTimer(timeInterval: 0.30, target: self, selector: #selector(animateButtonBorder), userInfo: nil, repeats: false)
+//        Timer.scheduledTimer(timeInterval: 0.30, target: self, selector: #selector(animateTextFieldLayer), userInfo: nil, repeats: false)
+//        Timer.scheduledTimer(timeInterval: 0.30, target: self, selector: #selector(animateButtonBorder), userInfo: nil, repeats: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +61,7 @@ class CreateAcctViewController: UIViewController {
     
     // Animating the email and passwrd line
     // By having a sublayer line draw itself
-   @objc func animateTextFieldLayer() {
+    func animateTextFieldLayer() {
         let usernameLayer = CALayer()
         
         usernameLayer.frame = CGRect(x: 0, y: usernameTextField.frame.maxY, width: usernameTextField.frame.size.width, height: 0.8)
@@ -104,7 +104,7 @@ class CreateAcctViewController: UIViewController {
     
     // Animate the borders for each button
     // To fully circulate around the button
-   @objc func animateButtonBorder() {
+    func animateButtonBorder() {
         let borderLayer = CAShapeLayer()
     
         // Creating paths around the buttons bounds.origin
