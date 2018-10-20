@@ -45,12 +45,7 @@ class LoginViewController: UIViewController {
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         
         loginButton.layer.cornerRadius = 20
-        //loginButton.layer.borderWidth = 1.5
         loginButton.layer.borderColor = UIColor.white.cgColor
-        
-        createAcctButton.layer.cornerRadius = 25
-        //createAcctButton.layer.borderWidth = 1.5
-        createAcctButton.layer.borderColor = UIColor.white.cgColor
     }
     
     // Animating the title label by shrinking it
@@ -100,11 +95,9 @@ class LoginViewController: UIViewController {
     // To fully circulate around the button
     func animateButtonBorder() {
         let loginBorder = CAShapeLayer()
-        let createAcctBorder = CAShapeLayer()
         
         // Creating paths around the buttons bounds.origin
         let loginPath = UIBezierPath(roundedRect: CGRect(origin: loginButton.bounds.origin, size: loginButton.bounds.size), cornerRadius: 20)
-        let createAcctPath = UIBezierPath(roundedRect: CGRect(origin: createAcctButton.bounds.origin, size: createAcctButton.bounds.size), cornerRadius: 25)
         
         // Setting the CAShapeLayer's path to the buttons bounds.origin
         loginBorder.path = loginPath.cgPath
@@ -114,19 +107,11 @@ class LoginViewController: UIViewController {
         loginBorder.lineCap = CAShapeLayerLineCap.round
         loginButton.layer.addSublayer(loginBorder)
         
-        createAcctBorder.path = createAcctPath.cgPath
-        createAcctBorder.strokeColor = UIColor.white.cgColor
-        createAcctBorder.fillColor = UIColor.clear.cgColor
-        createAcctBorder.lineWidth = 1.5
-        createAcctBorder.lineCap = CAShapeLayerLineCap.round
-        createAcctButton.layer.addSublayer(createAcctBorder)
-        
         let lineAnimation = CABasicAnimation(keyPath: "strokeEnd")
         lineAnimation.fromValue = 0
         lineAnimation.toValue = 1
         lineAnimation.duration = 2.5
         loginBorder.add(lineAnimation, forKey: "Login Button Animation")
-        createAcctBorder.add(lineAnimation, forKey: "Password Button Animation")
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
