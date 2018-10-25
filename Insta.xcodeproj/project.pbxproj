@@ -21,6 +21,11 @@
 		95F4F5382182595D009A94E4 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95F4F5372182595D009A94E4 /* Camera.storyboard */; };
 		95F4F53A2182596E009A94E4 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95F4F5392182596E009A94E4 /* Activity.storyboard */; };
 		95F4F53C2182597F009A94E4 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95F4F53B2182597F009A94E4 /* Profile.storyboard */; };
+		95F4F53F21825EA8009A94E4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4F53E21825EA8009A94E4 /* HomeViewController.swift */; };
+		95F4F54121825EBF009A94E4 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4F54021825EBF009A94E4 /* DiscoverViewController.swift */; };
+		95F4F54321825ED2009A94E4 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4F54221825ED2009A94E4 /* CameraViewController.swift */; };
+		95F4F54521825EE2009A94E4 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4F54421825EE2009A94E4 /* ActivityViewController.swift */; };
+		95F4F54721825EF5009A94E4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4F54621825EF5009A94E4 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +66,11 @@
 		95F4F5372182595D009A94E4 /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
 		95F4F5392182596E009A94E4 /* Activity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
 		95F4F53B2182597F009A94E4 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		95F4F53E21825EA8009A94E4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		95F4F54021825EBF009A94E4 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		95F4F54221825ED2009A94E4 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		95F4F54421825EE2009A94E4 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		95F4F54621825EF5009A94E4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +103,11 @@
 			children = (
 				95E10D5021715C03000922C9 /* LoginViewController.swift */,
 				95B0F31C217AB76F008CB17B /* CreateAcctViewController.swift */,
+				95F4F53E21825EA8009A94E4 /* HomeViewController.swift */,
+				95F4F54021825EBF009A94E4 /* DiscoverViewController.swift */,
+				95F4F54221825ED2009A94E4 /* CameraViewController.swift */,
+				95F4F54421825EE2009A94E4 /* ActivityViewController.swift */,
+				95F4F54621825EF5009A94E4 /* ProfileViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -310,6 +325,11 @@
 				95B0F31D217AB76F008CB17B /* CreateAcctViewController.swift in Sources */,
 				95E10D5121715C03000922C9 /* LoginViewController.swift in Sources */,
 				95E10D2221715554000922C9 /* AppDelegate.swift in Sources */,
+				95F4F53F21825EA8009A94E4 /* HomeViewController.swift in Sources */,
+				95F4F54521825EE2009A94E4 /* ActivityViewController.swift in Sources */,
+				95F4F54121825EBF009A94E4 /* DiscoverViewController.swift in Sources */,
+				95F4F54721825EF5009A94E4 /* ProfileViewController.swift in Sources */,
+				95F4F54321825ED2009A94E4 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
