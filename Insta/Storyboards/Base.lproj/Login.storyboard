@@ -56,6 +56,7 @@
                                         </state>
                                         <connections>
                                             <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ipq-Lu-Kib"/>
+                                            <segue destination="NEK-VT-RjF" kind="presentation" id="dLV-ru-WOX"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDp-DS-Lhb">
@@ -102,6 +103,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="gv6-fx-heo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="NEK-VT-RjF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t9n-fs-OG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1050" y="470"/>
         </scene>
         <!--Create Acct View Controller-->
         <scene sceneID="ziD-Gn-llR">
@@ -158,6 +167,7 @@
                                         <connections>
                                             <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="plE-Yb-2rY"/>
                                             <action selector="signUpButtonTapped:" destination="lrK-i8-4ke" eventType="touchUpInside" id="mJK-j3-fIy"/>
+                                            <segue destination="NEK-VT-RjF" kind="presentation" id="RFf-Gm-FMf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djw-bP-yGj">
@@ -200,10 +210,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CoI-BU-4Va" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="841.52923538230891"/>
+            <point key="canvasLocation" x="137" y="858"/>
         </scene>
     </scenes>
     <resources>
         <image name="placeholderImg" width="225" height="225"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="dLV-ru-WOX"/>
+    </inferredMetricsTieBreakers>
 </document>
