@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Change TabBar to white so that it looks good with Dark Theme
         UITabBar.appearance().backgroundColor = .white
         UITabBar.appearance().tintColor = .white
+        
+        // Configure Firebase within our app at launch
+        FirebaseApp.configure()
+        
         return true
     }
 
