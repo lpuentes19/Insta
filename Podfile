@@ -6,8 +6,8 @@ target 'Insta' do
   use_frameworks!
 
   # Pods for Insta
-
-    pod 'Firebase/Core'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
 
   target 'InstaTests' do
     inherit! :search_paths
