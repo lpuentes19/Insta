@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class CreateAcctViewController: UIViewController {
 
@@ -129,7 +130,8 @@ class CreateAcctViewController: UIViewController {
     @IBAction func signUpButtonTapped(_ sender: Any) {
         
         guard let email = emailTextField.text,
-            let password = passwordTextField.text else { return }
+            let password = passwordTextField.text,
+            let username = usernameTextField.text else { return }
         
         if email.isEmpty || password.isEmpty {
             print("Must enter an email.")
@@ -144,7 +146,12 @@ class CreateAcctViewController: UIViewController {
                 print(error!.localizedDescription)
                 return
             }
-            print(user)
+            
+            let ref = Database.database().reference()
+            let userReference = ref.child("users")
+            guard let uid = user?.user.uid else { return }
+            let newUserReference = userReference.child(uid)
+            newUserReference.setValue(["username": username, "email": email])
         })
     }
     
