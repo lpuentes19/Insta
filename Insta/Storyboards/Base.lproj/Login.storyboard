@@ -167,7 +167,6 @@
                                         <connections>
                                             <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="plE-Yb-2rY"/>
                                             <action selector="signUpButtonTapped:" destination="lrK-i8-4ke" eventType="touchUpInside" id="mJK-j3-fIy"/>
-                                            <segue destination="NEK-VT-RjF" kind="presentation" id="RFf-Gm-FMf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djw-bP-yGj">
@@ -210,13 +209,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CoI-BU-4Va" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="858"/>
+            <point key="canvasLocation" x="137" y="859"/>
         </scene>
     </scenes>
     <resources>
         <image name="placeholderImg" width="225" height="225"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="dLV-ru-WOX"/>
-    </inferredMetricsTieBreakers>
 </document>

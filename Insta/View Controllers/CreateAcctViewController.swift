@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CreateAcctViewController: UIViewController {
 
@@ -126,6 +127,25 @@ class CreateAcctViewController: UIViewController {
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
+        
+        guard let email = emailTextField.text,
+            let password = passwordTextField.text else { return }
+        
+        if email.isEmpty || password.isEmpty {
+            print("Must enter an email.")
+            return
+        } else if password.count < 6 {
+            print("Password must contain at least 6 characters or more.")
+            return
+        }
+        
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (user: AuthDataResult?, error: Error?) in
+            if error != nil {
+                print(error!.localizedDescription)
+                return
+            }
+            print(user)
+        })
     }
     
 }
