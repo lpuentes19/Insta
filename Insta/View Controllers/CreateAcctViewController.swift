@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 
 class CreateAcctViewController: UIViewController {
 
@@ -18,19 +19,27 @@ class CreateAcctViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     
+    var selectedImage: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
 //        Timer.scheduledTimer(timeInterval: 0.30, target: self, selector: #selector(animateTextFieldLayer), userInfo: nil, repeats: false)
 //        Timer.scheduledTimer(timeInterval: 0.30, target: self, selector: #selector(animateButtonBorder), userInfo: nil, repeats: false)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        animateTextFieldLayer()
-        animateButtonBorder()
+        // Calling this on the main thread so that when
+        // You switch back from the imagePickerController
+        // It does not animate two separate lines
+        DispatchQueue.main.async {
+            self.animateTextFieldLayer()
+            self.animateButtonBorder()
+        }
     }
     
     // Configuring the UI elements
@@ -38,6 +47,9 @@ class CreateAcctViewController: UIViewController {
         placeholderImageView.layer.cornerRadius = 60
         placeholderImageView.layer.borderWidth = 1
         placeholderImageView.layer.borderColor = UIColor.black.cgColor
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleProfileImage))
+        placeholderImageView.addGestureRecognizer(tapGesture)
         
         usernameTextField.backgroundColor = .clear
         usernameTextField.textColor = .white
@@ -68,7 +80,7 @@ class CreateAcctViewController: UIViewController {
         
         usernameLayer.frame = CGRect(x: 0, y: usernameTextField.frame.maxY, width: usernameTextField.frame.size.width, height: 0.8)
         
-        usernameLayer.position = CGPoint(x: 0, y: usernameTextField.bounds.maxY)
+        usernameLayer.position = CGPoint(x: 0, y: usernameTextField.bounds.maxY + 12)
         usernameLayer.anchorPoint = CGPoint(x: 0, y: 0)
         
         usernameLayer.backgroundColor = UIColor.white.cgColor
@@ -78,7 +90,7 @@ class CreateAcctViewController: UIViewController {
         
         emailLayer.frame = CGRect(x: 0, y: emailTextField.frame.maxY, width: emailTextField.frame.size.width, height: 0.8)
         
-        emailLayer.position = CGPoint(x: 0, y: emailTextField.bounds.maxY)
+        emailLayer.position = CGPoint(x: 0, y: emailTextField.bounds.maxY + 12)
         emailLayer.anchorPoint = CGPoint(x: 0, y: 0)
         
         emailLayer.backgroundColor = UIColor.white.cgColor
@@ -88,7 +100,7 @@ class CreateAcctViewController: UIViewController {
         
         passwordLayer.frame = CGRect(x: 0, y: passwordTextField.frame.maxY, width: passwordTextField.frame.size.width, height: 0.8)
         
-        passwordLayer.position = CGPoint(x: 0, y: passwordTextField.bounds.maxY)
+        passwordLayer.position = CGPoint(x: 0, y: passwordTextField.bounds.maxY + 12)
         passwordLayer.anchorPoint = CGPoint(x: 0, y: 0)
         
         passwordLayer.backgroundColor = UIColor.white.cgColor
@@ -127,6 +139,12 @@ class CreateAcctViewController: UIViewController {
         borderLayer.add(borderAnimation, forKey: "Sign Up Animation")
     }
     
+    @objc func handleProfileImage() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        present(pickerController, animated: true, completion: nil)
+    }
+    
     @IBAction func signUpButtonTapped(_ sender: Any) {
         
         guard let email = emailTextField.text,
@@ -146,13 +164,35 @@ class CreateAcctViewController: UIViewController {
                 print(error!.localizedDescription)
                 return
             }
-            
-            let ref = Database.database().reference()
-            let userReference = ref.child("users")
             guard let uid = user?.user.uid else { return }
-            let newUserReference = userReference.child(uid)
-            newUserReference.setValue(["username": username, "email": email])
+            let storageRef = Storage.storage().reference(forURL: "gs://insta-f769f.appspot.com").child("profile_image").child(uid)
+            if let profileImage = self.selectedImage, let imageData = profileImage.jpegData(compressionQuality: 0.1) {
+                storageRef.putData(imageData, metadata: nil, completion: { (metaData, error) in
+                    if error != nil {
+                        print(error!.localizedDescription)
+                        return
+                    }
+                    
+                    storageRef.downloadURL(completion: { (url, error) in
+                        let profileImageURL = url?.absoluteString
+                        let ref = Database.database().reference()
+                        let userReference = ref.child("users")
+                        let newUserReference = userReference.child(uid)
+                        newUserReference.setValue(["username": username, "email": email, "profileImage": profileImageURL!])
+                    })
+                })
+            }
         })
     }
+}
+
+extension CreateAcctViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            selectedImage = image
+            placeholderImageView.image = image
+        }
+        dismiss(animated: true, completion: nil)
+    }
 }
