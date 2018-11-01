@@ -174,6 +174,13 @@ class CreateAcctViewController: UIViewController {
         present(pickerController, animated: true, completion: nil)
     }
     
+    func setupUserInformation(profileImageURL: String, username: String, email: String, password: String, uid: String) {
+        let ref = Database.database().reference()
+        let userReference = ref.child("users")
+        let newUserReference = userReference.child(uid)
+        newUserReference.setValue(["username": username, "email": email, "profileImage": profileImageURL])
+    }
+    
     @IBAction func signUpButtonTapped(_ sender: Any) {
         
         guard let email = emailTextField.text,
@@ -197,10 +204,7 @@ class CreateAcctViewController: UIViewController {
                     
                     storageRef.downloadURL(completion: { (url, error) in
                         let profileImageURL = url?.absoluteString
-                        let ref = Database.database().reference()
-                        let userReference = ref.child("users")
-                        let newUserReference = userReference.child(uid)
-                        newUserReference.setValue(["username": username, "email": email, "profileImage": profileImageURL!])
+                        self.setupUserInformation(profileImageURL: profileImageURL!, username: username, email: email, password: password, uid: uid)
                     })
                 })
             }
