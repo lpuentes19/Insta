@@ -25,6 +25,7 @@ class CreateAcctViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
+        handleTextField()
 //        Timer.scheduledTimer(timeInterval: 0.30, target: self, selector: #selector(animateTextFieldLayer), userInfo: nil, repeats: false)
 //        Timer.scheduledTimer(timeInterval: 0.30, target: self, selector: #selector(animateButtonBorder), userInfo: nil, repeats: false)
         
@@ -139,6 +140,34 @@ class CreateAcctViewController: UIViewController {
         borderLayer.add(borderAnimation, forKey: "Sign Up Animation")
     }
     
+    func handleTextField() {
+        usernameTextField.addTarget(self, action: #selector(CreateAcctViewController.textFieldDidChange), for: .editingChanged)
+        emailTextField.addTarget(self, action: #selector(CreateAcctViewController.textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(CreateAcctViewController.textFieldDidChange), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange() {
+        guard let username = usernameTextField.text, !username.isEmpty,
+            let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty else {
+                
+                signUpButton.setTitleColor(UIColor.darkGray, for: .normal)
+                signUpButton.isEnabled = false
+                return
+        }
+        signUpButton.setTitleColor(UIColor.white, for: .normal)
+        signUpButton.isEnabled = true
+    }
+    
+    func handleAuthenticationUIAlert(message: String) {
+        let alertController = UIAlertController(title: "Authentication Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     @objc func handleProfileImage() {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
@@ -151,16 +180,9 @@ class CreateAcctViewController: UIViewController {
             let password = passwordTextField.text,
             let username = usernameTextField.text else { return }
         
-        if email.isEmpty || password.isEmpty {
-            print("Must enter an email.")
-            return
-        } else if password.count < 6 {
-            print("Password must contain at least 6 characters or more.")
-            return
-        }
-        
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user: AuthDataResult?, error: Error?) in
             if error != nil {
+                self.handleAuthenticationUIAlert(message: error!.localizedDescription)
                 print(error!.localizedDescription)
                 return
             }
