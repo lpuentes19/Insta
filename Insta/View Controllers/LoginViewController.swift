@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
         
         setupUI()
         animateTitleLabel()
+        handleTextField()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,6 +118,23 @@ class LoginViewController: UIViewController {
         lineAnimation.toValue = 1
         lineAnimation.duration = 2.5
         loginBorder.add(lineAnimation, forKey: "Login Button Animation")
+    }
+    
+    func handleTextField() {
+        emailTextField.addTarget(self, action: #selector(CreateAcctViewController.textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(CreateAcctViewController.textFieldDidChange), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange() {
+        guard let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty else {
+                
+                loginButton.setTitleColor(UIColor.darkGray, for: .normal)
+                loginButton.isEnabled = false
+                return
+        }
+        loginButton.setTitleColor(UIColor.white, for: .normal)
+        loginButton.isEnabled = true
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
