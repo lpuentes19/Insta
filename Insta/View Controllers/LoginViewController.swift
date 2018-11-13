@@ -26,6 +26,7 @@ class LoginViewController: UIViewController {
         
         setupUI()
         animateTitleLabel()
+        loginButton.isEnabled = false
         handleTextField()
     }
     
@@ -139,7 +140,7 @@ class LoginViewController: UIViewController {
         guard let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextField.text, !password.isEmpty else {
                 
-                loginButton.setTitleColor(UIColor.darkGray, for: .normal)
+                loginButton.setTitleColor(UIColor.lightText, for: .normal)
                 loginButton.isEnabled = false
                 return
         }

@@ -25,7 +25,9 @@ class CreateAcctViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
+        signUpButton.isEnabled = false
         handleTextField()
+        
 //        Timer.scheduledTimer(timeInterval: 0.30, target: self, selector: #selector(animateTextFieldLayer), userInfo: nil, repeats: false)
 //        Timer.scheduledTimer(timeInterval: 0.30, target: self, selector: #selector(animateButtonBorder), userInfo: nil, repeats: false)
         
@@ -151,7 +153,7 @@ class CreateAcctViewController: UIViewController {
             let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextField.text, !password.isEmpty else {
                 
-                signUpButton.setTitleColor(UIColor.darkGray, for: .normal)
+                signUpButton.setTitleColor(UIColor.lightText, for: .normal)
                 signUpButton.isEnabled = false
                 return
         }
