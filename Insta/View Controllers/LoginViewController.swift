@@ -36,6 +36,15 @@ class LoginViewController: UIViewController {
         animateButtonBorder()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Checking to see if the user is still logged in
+        if Auth.auth().currentUser != nil {
+            performSegue(withIdentifier: "SignInComplete", sender: self)
+        }
+    }
+    
     // Configuring up the UI Elements
     func setupUI() {
         
