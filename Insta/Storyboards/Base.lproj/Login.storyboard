@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -56,7 +56,6 @@
                                         </state>
                                         <connections>
                                             <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ipq-Lu-Kib"/>
-                                            <segue destination="NEK-VT-RjF" kind="presentation" id="dLV-ru-WOX"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDp-DS-Lhb">
@@ -98,6 +97,7 @@
                         <outlet property="loginButton" destination="Ouj-gR-0JS" id="f4g-nv-oUD"/>
                         <outlet property="passwordTextField" destination="tMT-vJ-fcW" id="7LW-P8-eK4"/>
                         <outlet property="titleLabel" destination="vI8-i4-2RA" id="nZO-PL-7hC"/>
+                        <segue destination="NEK-VT-RjF" kind="presentation" identifier="SignInComplete" id="f5u-Ck-YJd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -205,6 +205,7 @@
                         <outlet property="placeholderImageView" destination="gnq-dJ-2gt" id="vUy-Vc-e4e"/>
                         <outlet property="signUpButton" destination="xOq-Mn-fxY" id="JAV-bX-Acb"/>
                         <outlet property="usernameTextField" destination="yH5-HH-Z75" id="eNc-Ne-BVH"/>
+                        <segue destination="NEK-VT-RjF" kind="presentation" identifier="CreateAcctComplete" id="WeU-si-TNr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CoI-BU-4Va" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -215,4 +216,7 @@
     <resources>
         <image name="placeholderImg" width="225" height="225"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="WeU-si-TNr"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
@@ -137,7 +138,28 @@ class LoginViewController: UIViewController {
         loginButton.isEnabled = true
     }
     
-    @IBAction func loginButtonTapped(_ sender: Any) {
+    func handleAuthenticationUIAlert(message: String) {
+        let alertController = UIAlertController(title: "Authentication Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        
+        guard let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty else { return }
+        
+        Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
+            if error != nil {
+                self.handleAuthenticationUIAlert(message: error!.localizedDescription)
+                print(error!.localizedDescription)
+                return
+            }
+            
+            self.performSegue(withIdentifier: "SignInComplete", sender: self)
+        })
+    }
 }

@@ -205,6 +205,8 @@ class CreateAcctViewController: UIViewController {
                     storageRef.downloadURL(completion: { (url, error) in
                         let profileImageURL = url?.absoluteString
                         self.setupUserInformation(profileImageURL: profileImageURL!, username: username, email: email, password: password, uid: uid)
+                        
+                        self.performSegue(withIdentifier: "CreateAcctComplete", sender: self)
                     })
                 })
             }
