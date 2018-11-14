@@ -8,6 +8,6 @@
 
 import Foundation
 
-class FirebaseReferences {
+struct FirebaseReferences {
     static var rootStorageReference = "gs://insta-f769f.appspot.com"
 }
