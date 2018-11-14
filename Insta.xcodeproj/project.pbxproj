@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8AB1C2E4E7F6FB71143D940A /* Pods_InstaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D10C62A4A87367AED2557AB /* Pods_InstaTests.framework */; };
 		951F6908219B8B12004D6768 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F6907219B8B12004D6768 /* AuthManager.swift */; };
+		951F690A219BAFE4004D6768 /* FirebaseReferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F6909219BAFE4004D6768 /* FirebaseReferences.swift */; };
 		95B0F31D217AB76F008CB17B /* CreateAcctViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0F31C217AB76F008CB17B /* CreateAcctViewController.swift */; };
 		95B0F320217BCAF1008CB17B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95B0F31F217BCAF1008CB17B /* Main.storyboard */; };
 		95E10D2221715554000922C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E10D2121715554000922C9 /* AppDelegate.swift */; };
@@ -57,6 +58,7 @@
 		8D10C62A4A87367AED2557AB /* Pods_InstaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7E88EF333B6803560540CE /* Pods_Insta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Insta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		951F6907219B8B12004D6768 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		951F6909219BAFE4004D6768 /* FirebaseReferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseReferences.swift; sourceTree = "<group>"; };
 		95B0F31C217AB76F008CB17B /* CreateAcctViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAcctViewController.swift; sourceTree = "<group>"; };
 		95B0F31F217BCAF1008CB17B /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		95E10D1E21715554000922C9 /* Insta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insta.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				951F6907219B8B12004D6768 /* AuthManager.swift */,
+				951F6909219BAFE4004D6768 /* FirebaseReferences.swift */,
 				95F4F53D2182599D009A94E4 /* Storyboards */,
 				95B0F31E217BCA72008CB17B /* View Controllers */,
 				95E10D4F21715667000922C9 /* Resources */,
@@ -476,6 +479,7 @@
 				95E10D2221715554000922C9 /* AppDelegate.swift in Sources */,
 				95F4F53F21825EA8009A94E4 /* HomeViewController.swift in Sources */,
 				95F4F54521825EE2009A94E4 /* ActivityViewController.swift in Sources */,
+				951F690A219BAFE4004D6768 /* FirebaseReferences.swift in Sources */,
 				95F4F54121825EBF009A94E4 /* DiscoverViewController.swift in Sources */,
 				95F4F54721825EF5009A94E4 /* ProfileViewController.swift in Sources */,
 				95F4F54321825ED2009A94E4 /* CameraViewController.swift in Sources */,

@@ -32,7 +32,7 @@ class AuthManager {
                 return
             }
             guard let uid = user?.user.uid else { return }
-            let storageRef = Storage.storage().reference(forURL: "gs://insta-f769f.appspot.com").child("profile_image").child(uid)
+            let storageRef = Storage.storage().reference(forURL: FirebaseReferences.rootStorageReference).child("profile_image").child(uid)
             storageRef.putData(imageData, metadata: nil, completion: { (metaData, error) in
                 if error != nil {
                     onError(error!.localizedDescription)
