@@ -129,6 +129,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		951F690B219BB134004D6768 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				951F6907219B8B12004D6768 /* AuthManager.swift */,
+				951F6909219BAFE4004D6768 /* FirebaseReferences.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		95B0F31E217BCA72008CB17B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,10 +177,9 @@
 		95E10D2021715554000922C9 /* Insta */ = {
 			isa = PBXGroup;
 			children = (
-				951F6907219B8B12004D6768 /* AuthManager.swift */,
-				951F6909219BAFE4004D6768 /* FirebaseReferences.swift */,
 				95F4F53D2182599D009A94E4 /* Storyboards */,
 				95B0F31E217BCA72008CB17B /* View Controllers */,
+				951F690B219BB134004D6768 /* Helpers */,
 				95E10D4F21715667000922C9 /* Resources */,
 			);
 			path = Insta;
