@@ -45,6 +45,10 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     // Configuring the UI elements
     func setupUI() {
         placeholderImageView.layer.cornerRadius = 60
@@ -184,6 +188,7 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
+        view.endEditing(true)
         
         guard let username = usernameTextField.text,
             let email = emailTextField.text,
