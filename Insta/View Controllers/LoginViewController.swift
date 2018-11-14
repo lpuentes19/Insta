@@ -132,8 +132,8 @@ class LoginViewController: UIViewController {
     }
     
     func handleTextField() {
-        emailTextField.addTarget(self, action: #selector(CreateAcctViewController.textFieldDidChange), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(CreateAcctViewController.textFieldDidChange), for: .editingChanged)
+        emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: .editingChanged)
     }
     
     @objc func textFieldDidChange() {

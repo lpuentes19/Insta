@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class CreateAcctViewController: UIViewController {
+class SignUpViewController: UIViewController {
 
     @IBOutlet weak var placeholderImageView: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -143,9 +143,9 @@ class CreateAcctViewController: UIViewController {
     }
     
     func handleTextField() {
-        usernameTextField.addTarget(self, action: #selector(CreateAcctViewController.textFieldDidChange), for: .editingChanged)
-        emailTextField.addTarget(self, action: #selector(CreateAcctViewController.textFieldDidChange), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(CreateAcctViewController.textFieldDidChange), for: .editingChanged)
+        usernameTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: .editingChanged)
+        emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: .editingChanged)
     }
     
     @objc func textFieldDidChange() {
@@ -193,7 +193,7 @@ class CreateAcctViewController: UIViewController {
             AuthManager.createAccountWith(username: username, email: email, password: password, imageData: imageData, onError: { (error) in
                 self.handleSignUpUIAlert(message: error)
             }, onSuccess: {
-                self.performSegue(withIdentifier: "CreateAcctComplete", sender: self)
+                self.performSegue(withIdentifier: "SignUpComplete", sender: self)
             })
         } else {
             handleSignUpUIAlert(message: "Must add a profile image.")
@@ -201,7 +201,7 @@ class CreateAcctViewController: UIViewController {
     }
 }
 
-extension CreateAcctViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {

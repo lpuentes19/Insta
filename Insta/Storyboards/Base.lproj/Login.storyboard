@@ -112,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="1050" y="470"/>
         </scene>
-        <!--Create Acct View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="ziD-Gn-llR">
             <objects>
-                <viewController id="lrK-i8-4ke" customClass="CreateAcctViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lrK-i8-4ke" customClass="SignUpViewController" customModule="Insta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AHI-Qe-0dm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -205,7 +205,7 @@
                         <outlet property="placeholderImageView" destination="gnq-dJ-2gt" id="vUy-Vc-e4e"/>
                         <outlet property="signUpButton" destination="xOq-Mn-fxY" id="JAV-bX-Acb"/>
                         <outlet property="usernameTextField" destination="yH5-HH-Z75" id="eNc-Ne-BVH"/>
-                        <segue destination="NEK-VT-RjF" kind="presentation" identifier="CreateAcctComplete" id="WeU-si-TNr"/>
+                        <segue destination="NEK-VT-RjF" kind="presentation" identifier="SignUpComplete" id="WeU-si-TNr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CoI-BU-4Va" userLabel="First Responder" sceneMemberID="firstResponder"/>

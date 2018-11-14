@@ -10,7 +10,7 @@
 		8AB1C2E4E7F6FB71143D940A /* Pods_InstaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D10C62A4A87367AED2557AB /* Pods_InstaTests.framework */; };
 		951F6908219B8B12004D6768 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F6907219B8B12004D6768 /* AuthManager.swift */; };
 		951F690A219BAFE4004D6768 /* FirebaseReferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F6909219BAFE4004D6768 /* FirebaseReferences.swift */; };
-		95B0F31D217AB76F008CB17B /* CreateAcctViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0F31C217AB76F008CB17B /* CreateAcctViewController.swift */; };
+		95B0F31D217AB76F008CB17B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0F31C217AB76F008CB17B /* SignUpViewController.swift */; };
 		95B0F320217BCAF1008CB17B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95B0F31F217BCAF1008CB17B /* Main.storyboard */; };
 		95E10D2221715554000922C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E10D2121715554000922C9 /* AppDelegate.swift */; };
 		95E10D2721715554000922C9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E10D2521715554000922C9 /* Login.storyboard */; };
@@ -59,7 +59,7 @@
 		8E7E88EF333B6803560540CE /* Pods_Insta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Insta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		951F6907219B8B12004D6768 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		951F6909219BAFE4004D6768 /* FirebaseReferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseReferences.swift; sourceTree = "<group>"; };
-		95B0F31C217AB76F008CB17B /* CreateAcctViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAcctViewController.swift; sourceTree = "<group>"; };
+		95B0F31C217AB76F008CB17B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		95B0F31F217BCAF1008CB17B /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		95E10D1E21715554000922C9 /* Insta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E10D2121715554000922C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				95E10D5021715C03000922C9 /* LoginViewController.swift */,
-				95B0F31C217AB76F008CB17B /* CreateAcctViewController.swift */,
+				95B0F31C217AB76F008CB17B /* SignUpViewController.swift */,
 				95F4F53E21825EA8009A94E4 /* HomeViewController.swift */,
 				95F4F54021825EBF009A94E4 /* DiscoverViewController.swift */,
 				95F4F54221825ED2009A94E4 /* CameraViewController.swift */,
@@ -481,7 +481,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95B0F31D217AB76F008CB17B /* CreateAcctViewController.swift in Sources */,
+				95B0F31D217AB76F008CB17B /* SignUpViewController.swift in Sources */,
 				951F6908219B8B12004D6768 /* AuthManager.swift in Sources */,
 				95E10D5121715C03000922C9 /* LoginViewController.swift in Sources */,
 				95E10D2221715554000922C9 /* AppDelegate.swift in Sources */,
