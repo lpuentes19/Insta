@@ -171,15 +171,6 @@ class SignUpViewController: UIViewController {
         signUpButton.isEnabled = true
     }
     
-    func handleSignUpUIAlert(message: String) {
-        let alertController = UIAlertController(title: "Sign Up Error", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
-            alertController.dismiss(animated: true, completion: nil)
-        }
-        alertController.addAction(okAction)
-        present(alertController, animated: true, completion: nil)
-    }
-    
     @objc func handleProfileImage() {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
@@ -223,7 +214,12 @@ class SignUpViewController: UIViewController {
             })
         } else {
             self.progressHUD.dismiss()
-            handleSignUpUIAlert(message: "Must add a profile image.")
+            
+            self.errorHUD.textLabel.text = "Must add a profile image"
+            self.errorHUD.tintColor = .red
+            self.errorHUD.indicatorView = JGProgressHUDErrorIndicatorView()
+            self.errorHUD.show(in: self.view)
+            self.errorHUD.dismiss(afterDelay: 3.0)
         }
     }
 }
