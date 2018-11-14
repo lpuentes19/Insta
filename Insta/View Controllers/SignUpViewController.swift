@@ -7,9 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
-import FirebaseStorage
+import JGProgressHUD
 
 class SignUpViewController: UIViewController {
 
@@ -20,6 +18,10 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     
     var selectedImage: UIImage?
+    
+    let progressHUD = JGProgressHUD(style: .dark)
+    let errorHUD = JGProgressHUD(style: .dark)
+    let successHUD = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -180,11 +182,8 @@ class SignUpViewController: UIViewController {
         present(pickerController, animated: true, completion: nil)
     }
     
-    func setupUserInformation(profileImageURL: String, username: String, email: String, password: String, uid: String) {
-        let ref = Database.database().reference()
-        let userReference = ref.child("users")
-        let newUserReference = userReference.child(uid)
-        newUserReference.setValue(["username": username, "email": email, "profileImage": profileImageURL])
+    @objc func signInComplete() {
+        performSegue(withIdentifier: "SignUpComplete", sender: self)
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
@@ -194,13 +193,32 @@ class SignUpViewController: UIViewController {
             let email = emailTextField.text,
             let password = passwordTextField.text else { return }
         
+        progressHUD.textLabel.text = "Loading..."
+        progressHUD.show(in: self.view)
+        
         if let profileImage = self.selectedImage, let imageData = profileImage.jpegData(compressionQuality: 0.1) {
             AuthManager.createAccountWith(username: username, email: email, password: password, imageData: imageData, onError: { (error) in
-                self.handleSignUpUIAlert(message: error)
+                self.progressHUD.dismiss()
+                
+                self.errorHUD.textLabel.text = "\(error)"
+                self.errorHUD.tintColor = .red
+                self.errorHUD.indicatorView = JGProgressHUDErrorIndicatorView()
+                self.errorHUD.show(in: self.view)
+                self.errorHUD.dismiss(afterDelay: 3.0)
             }, onSuccess: {
-                self.performSegue(withIdentifier: "SignUpComplete", sender: self)
+                self.progressHUD.dismiss()
+                
+                self.successHUD.textLabel.text = "Sign Up Complete"
+                self.successHUD.tintColor = .green
+                self.successHUD.indicatorView = JGProgressHUDSuccessIndicatorView()
+                self.successHUD.show(in: self.view)
+                self.successHUD.dismiss(afterDelay: 2.0)
+                
+                // Put the segue in a Timer to give the successHUD view time to show
+                Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(SignUpViewController.signInComplete), userInfo: nil, repeats: false)
             })
         } else {
+            self.progressHUD.dismiss()
             handleSignUpUIAlert(message: "Must add a profile image.")
         }
     }

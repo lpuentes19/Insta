@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -16,6 +17,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var createAcctButton: UIButton!
+    
+    let progressHUD = JGProgressHUD(style: .dark)
+    let errorHUD = JGProgressHUD(style: .dark)
+    let successHUD = JGProgressHUD(style: .dark)
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -136,8 +141,8 @@ class LoginViewController: UIViewController {
     }
     
     func handleTextField() {
-        emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: .editingChanged)
+        emailTextField.addTarget(self, action: #selector(LoginViewController.textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(LoginViewController.textFieldDidChange), for: .editingChanged)
     }
     
     @objc func textFieldDidChange() {
@@ -152,13 +157,8 @@ class LoginViewController: UIViewController {
         loginButton.isEnabled = true
     }
     
-    func handleAuthenticationUIAlert(message: String) {
-        let alertController = UIAlertController(title: "Authentication Error", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
-            alertController.dismiss(animated: true, completion: nil)
-        }
-        alertController.addAction(okAction)
-        present(alertController, animated: true, completion: nil)
+    @objc func signInComplete() {
+        performSegue(withIdentifier: "SignInComplete", sender: self)
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -167,10 +167,28 @@ class LoginViewController: UIViewController {
         guard let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextField.text, !password.isEmpty else { return }
         
+        progressHUD.textLabel.text = "Loading..."
+        progressHUD.show(in: self.view)
+        
         AuthManager.signInWith(email: email, password: password, onError: { (error) in
-            self.handleAuthenticationUIAlert(message: error)
+            self.progressHUD.dismiss()
+            
+            self.errorHUD.textLabel.text = "\(error)"
+            self.errorHUD.tintColor = .red
+            self.errorHUD.indicatorView = JGProgressHUDErrorIndicatorView()
+            self.errorHUD.show(in: self.view)
+            self.errorHUD.dismiss(afterDelay: 3.0)
         }, onSuccess: {
-            self.performSegue(withIdentifier: "SignInComplete", sender: self)
+            self.progressHUD.dismiss()
+            
+            self.successHUD.textLabel.text = "Success"
+            self.successHUD.tintColor = .green
+            self.successHUD.indicatorView = JGProgressHUDSuccessIndicatorView()
+            self.successHUD.show(in: self.view)
+            self.successHUD.dismiss(afterDelay: 2.0)
+            
+            // Put the segue in a Timer to give the successHUD view time to show
+            Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(LoginViewController.signInComplete), userInfo: nil, repeats: false)
         })
     }
 }
