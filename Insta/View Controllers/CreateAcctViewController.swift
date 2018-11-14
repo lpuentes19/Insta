@@ -161,8 +161,8 @@ class CreateAcctViewController: UIViewController {
         signUpButton.isEnabled = true
     }
     
-    func handleAuthenticationUIAlert(message: String) {
-        let alertController = UIAlertController(title: "Authentication Error", message: message, preferredStyle: .alert)
+    func handleSignUpUIAlert(message: String) {
+        let alertController = UIAlertController(title: "Sign Up Error", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
             alertController.dismiss(animated: true, completion: nil)
         }
@@ -185,34 +185,19 @@ class CreateAcctViewController: UIViewController {
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
         
-        guard let email = emailTextField.text,
-            let password = passwordTextField.text,
-            let username = usernameTextField.text else { return }
+        guard let username = usernameTextField.text,
+            let email = emailTextField.text,
+            let password = passwordTextField.text else { return }
         
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (user: AuthDataResult?, error: Error?) in
-            if error != nil {
-                self.handleAuthenticationUIAlert(message: error!.localizedDescription)
-                print(error!.localizedDescription)
-                return
-            }
-            guard let uid = user?.user.uid else { return }
-            let storageRef = Storage.storage().reference(forURL: "gs://insta-f769f.appspot.com").child("profile_image").child(uid)
-            if let profileImage = self.selectedImage, let imageData = profileImage.jpegData(compressionQuality: 0.1) {
-                storageRef.putData(imageData, metadata: nil, completion: { (metaData, error) in
-                    if error != nil {
-                        print(error!.localizedDescription)
-                        return
-                    }
-                    
-                    storageRef.downloadURL(completion: { (url, error) in
-                        let profileImageURL = url?.absoluteString
-                        self.setupUserInformation(profileImageURL: profileImageURL!, username: username, email: email, password: password, uid: uid)
-                        
-                        self.performSegue(withIdentifier: "CreateAcctComplete", sender: self)
-                    })
-                })
-            }
-        })
+        if let profileImage = self.selectedImage, let imageData = profileImage.jpegData(compressionQuality: 0.1) {
+            AuthManager.createAccountWith(username: username, email: email, password: password, imageData: imageData, onError: { (error) in
+                self.handleSignUpUIAlert(message: error)
+            }, onSuccess: {
+                self.performSegue(withIdentifier: "CreateAcctComplete", sender: self)
+            })
+        } else {
+            handleSignUpUIAlert(message: "Must add a profile image.")
+        }
     }
 }
 
