@@ -162,13 +162,9 @@ class LoginViewController: UIViewController {
         guard let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextField.text, !password.isEmpty else { return }
         
-        Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
-            if error != nil {
-                self.handleAuthenticationUIAlert(message: error!.localizedDescription)
-                print(error!.localizedDescription)
-                return
-            }
-            
+        AuthManager.signInWith(email: email, password: password, onError: { (error) in
+            self.handleAuthenticationUIAlert(message: error)
+        }, onSuccess: {
             self.performSegue(withIdentifier: "SignInComplete", sender: self)
         })
     }
