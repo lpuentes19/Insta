@@ -56,6 +56,9 @@
                                 <state key="normal" title="Post">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="postButtonTapped:" destination="oET-eW-oHN" eventType="touchUpInside" id="sFQ-q2-0Ut"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -70,6 +73,11 @@
                         <viewLayoutGuide key="safeArea" id="FXh-Od-uf3"/>
                     </view>
                     <navigationItem key="navigationItem" title="Camera" id="EYw-Yd-fiq"/>
+                    <connections>
+                        <outlet property="captionTextView" destination="ffL-bR-c7J" id="1y9-BJ-zX9"/>
+                        <outlet property="postButton" destination="etG-MD-qJC" id="ljP-kO-Ap8"/>
+                        <outlet property="postImage" destination="RBJ-0Y-ZGY" id="eR2-ZM-0XA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJq-a3-klj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

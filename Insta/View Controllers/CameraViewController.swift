@@ -9,8 +9,14 @@
 import UIKit
 
 class CameraViewController: UIViewController {
-
+    @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var captionTextView: UITextView!
+    @IBOutlet weak var postButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    @IBAction func postButtonTapped(_ sender: Any) {
     }
 }
