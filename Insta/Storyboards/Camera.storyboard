@@ -20,7 +20,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oDc-gj-bro">
                                 <rect key="frame" x="0.0" y="64" width="375" height="125"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="RBJ-0Y-ZGY">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="RBJ-0Y-ZGY">
                                         <rect key="frame" x="8" y="10" width="105" height="105"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="105" id="V3P-UG-tBF"/>
@@ -76,7 +76,7 @@
                     <connections>
                         <outlet property="captionTextView" destination="ffL-bR-c7J" id="1y9-BJ-zX9"/>
                         <outlet property="postButton" destination="etG-MD-qJC" id="ljP-kO-Ap8"/>
-                        <outlet property="postImage" destination="RBJ-0Y-ZGY" id="eR2-ZM-0XA"/>
+                        <outlet property="postImageView" destination="RBJ-0Y-ZGY" id="eR2-ZM-0XA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJq-a3-klj" userLabel="First Responder" sceneMemberID="firstResponder"/>
