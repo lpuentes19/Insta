@@ -26,7 +26,6 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="236" id="7eQ-qI-gc7"/>
                                         </constraints>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -47,7 +46,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etG-MD-qJC">
                                 <rect key="frame" x="8" y="565" width="359" height="45"/>
-                                <color key="backgroundColor" red="0.33731216192245483" green="0.33711063861846924" blue="0.34509953856468201" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.33725490196078434" green="0.33725490196078434" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="cJK-XG-coN"/>
                                 </constraints>
@@ -71,9 +70,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FXh-Od-uf3"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Camera" id="EYw-Yd-fiq"/>
+                    <navigationItem key="navigationItem" title="Camera" id="EYw-Yd-fiq">
+                        <barButtonItem key="leftBarButtonItem" title="Clear" id="8z9-79-6yw">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="clearButtonTapped:" destination="oET-eW-oHN" id="AXN-zh-EWx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="captionTextView" destination="ffL-bR-c7J" id="1y9-BJ-zX9"/>
+                        <outlet property="clearButton" destination="8z9-79-6yw" id="LHf-E0-Egw"/>
                         <outlet property="postButton" destination="etG-MD-qJC" id="ljP-kO-Ap8"/>
                         <outlet property="postImageView" destination="RBJ-0Y-ZGY" id="eR2-ZM-0XA"/>
                     </connections>

@@ -12,9 +12,11 @@ import FirebaseStorage
 import JGProgressHUD
 
 class CameraViewController: UIViewController {
+    
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var clearButton: UIBarButtonItem!
     
     let progressHUD = JGProgressHUD(style: .dark)
     let errorHUD = JGProgressHUD(style: .dark)
@@ -28,10 +30,42 @@ class CameraViewController: UIViewController {
         postImageView.addGestureRecognizer(tapGesture)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        handlePost()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     @objc func handlePostImage() {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
+    }
+    
+    func handlePost() {
+        if selectedImage != nil {
+            clearButton.isEnabled = true
+            postButton.isEnabled = true
+            postButton.backgroundColor = UIColor(red: 86/255, green: 86/255, blue: 88/255, alpha: 1)
+        } else {
+            clearButton.isEnabled = false
+            postButton.isEnabled = false
+            postButton.backgroundColor = .lightGray
+        }
+    }
+    
+    @objc func switchBackToHomeView() {
+        tabBarController?.selectedIndex = 0
+    }
+    
+    func clear() {
+        postImageView.image = #imageLiteral(resourceName: "Placeholder-image")
+        selectedImage = nil
+        captionTextView.text = ""
     }
     
     func sendImageDataToDatabase(postImageURL: String) {
@@ -57,11 +91,18 @@ class CameraViewController: UIViewController {
                 self.successHUD.indicatorView = JGProgressHUDSuccessIndicatorView()
                 self.successHUD.show(in: self.view)
                 self.successHUD.dismiss(afterDelay: 3.0)
+                self.clear()
             }
         }
     }
     
+    @IBAction func clearButtonTapped(_ sender: Any) {
+        clear()
+        handlePost()
+    }
+    
     @IBAction func postButtonTapped(_ sender: Any) {
+        view.endEditing(true)
         progressHUD.textLabel.text = "Loading..."
         progressHUD.show(in: self.view)
         if let profileImage = self.selectedImage, let imageData = profileImage.jpegData(compressionQuality: 0.1) {
@@ -79,6 +120,7 @@ class CameraViewController: UIViewController {
                 storageRef.downloadURL(completion: { (url, error) in
                     if let postImageImageURL = url?.absoluteString {
                         self.sendImageDataToDatabase(postImageURL: postImageImageURL)
+                        Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(self.switchBackToHomeView), userInfo: nil, repeats: false)
                     }
                 })
             })
