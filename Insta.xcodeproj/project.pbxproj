@@ -13,6 +13,7 @@
 		95B0F31D217AB76F008CB17B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0F31C217AB76F008CB17B /* SignUpViewController.swift */; };
 		95B0F320217BCAF1008CB17B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95B0F31F217BCAF1008CB17B /* Main.storyboard */; };
 		95D710A621A0919B00946EC1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D710A521A0919B00946EC1 /* Post.swift */; };
+		95D710A921A0AA3200946EC1 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D710A821A0AA3200946EC1 /* HomeTableViewCell.swift */; };
 		95E10D2221715554000922C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E10D2121715554000922C9 /* AppDelegate.swift */; };
 		95E10D2721715554000922C9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E10D2521715554000922C9 /* Login.storyboard */; };
 		95E10D2921715555000922C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95E10D2821715555000922C9 /* Assets.xcassets */; };
@@ -63,6 +64,7 @@
 		95B0F31C217AB76F008CB17B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		95B0F31F217BCAF1008CB17B /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		95D710A521A0919B00946EC1 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		95D710A821A0AA3200946EC1 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		95E10D1E21715554000922C9 /* Insta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Insta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E10D2121715554000922C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95E10D2621715554000922C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
@@ -162,6 +164,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		95D710AA21A0AA3900946EC1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				95D710A821A0AA3200946EC1 /* HomeTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		95E10D1521715553000922C9 = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +199,7 @@
 			children = (
 				95B0F31E217BCA72008CB17B /* View Controllers */,
 				95D710A721A091A800946EC1 /* Model */,
+				95D710AA21A0AA3900946EC1 /* Views */,
 				951F690B219BB134004D6768 /* Helpers */,
 				95F4F53D2182599D009A94E4 /* Storyboards */,
 				95E10D4F21715667000922C9 /* Resources */,
@@ -500,6 +511,7 @@
 				95E10D5121715C03000922C9 /* LoginViewController.swift in Sources */,
 				95E10D2221715554000922C9 /* AppDelegate.swift in Sources */,
 				95F4F53F21825EA8009A94E4 /* HomeViewController.swift in Sources */,
+				95D710A921A0AA3200946EC1 /* HomeTableViewCell.swift in Sources */,
 				95F4F54521825EE2009A94E4 /* ActivityViewController.swift in Sources */,
 				951F690A219BAFE4004D6768 /* FirebaseReferences.swift in Sources */,
 				95F4F54121825EBF009A94E4 /* DiscoverViewController.swift in Sources */,
