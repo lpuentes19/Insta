@@ -13,6 +13,9 @@ import FirebaseDatabase
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var posts = [Post]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +37,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func loadPosts() {
         Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
-            print(snapshot.value)
+            if let dict = snapshot.value as? [String: Any] {
+                let post = Post.decodePhotoPost(dict: dict)
+                self.posts.append(post)
+                self.tableView.reloadData()
+            }
         }
     }
     

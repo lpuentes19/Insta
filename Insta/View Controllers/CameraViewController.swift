@@ -73,7 +73,7 @@ class CameraViewController: UIViewController {
         let postReference = ref.child("posts")
         if let postID = postReference.childByAutoId().key {
             let newPostReference = postReference.child(postID)
-            newPostReference.setValue(["postImageURL": postImageURL]) { (error, ref) in
+            newPostReference.setValue(["caption": captionTextView.text!,"postImageURL": postImageURL]) { (error, ref) in
                 if error != nil {
                     self.progressHUD.dismiss()
                     
