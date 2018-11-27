@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import SDWebImage
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -23,24 +24,25 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         
-        //loadPosts()
+        loadPosts()
     }
     
     // MARK: - TableViewDataSource Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! HomeTableViewCell
-        cell.postImageView.image = #imageLiteral(resourceName: "placeholderImg")
-        cell.captionLabel.text = "hello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello worldhello world"
+        
+        let post = posts[indexPath.row]
+        cell.updateViews(post: post)
+        
         return cell
     }
     
     // MARK: - TableViewDelegateMethods
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         return 510
     }
     

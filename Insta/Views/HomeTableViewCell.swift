@@ -22,12 +22,24 @@ class HomeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        profileImageView.layer.cornerRadius = 16
+        profileImageView.layer.masksToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func updateViews(post: Post) {
+        profileImageView.image = #imageLiteral(resourceName: "placeholderImg")
+        profileNameLabel.text = "Myth"
+        captionLabel.text = post.caption
+        if let imageURLString = post.imageURLString {
+            let imageURL = URL(string: imageURLString)
+            postImageView.sd_setImage(with: imageURL, completed: nil)
+        }
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {
