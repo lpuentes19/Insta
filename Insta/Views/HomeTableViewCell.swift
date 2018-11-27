@@ -19,6 +19,12 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
     
+    var post: Post? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,7 +38,8 @@ class HomeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func updateViews(post: Post) {
+    func updateViews() {
+        guard let post = post else { return }
         profileImageView.image = #imageLiteral(resourceName: "placeholderImg")
         profileNameLabel.text = "Myth"
         captionLabel.text = post.caption

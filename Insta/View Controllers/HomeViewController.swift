@@ -36,7 +36,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! HomeTableViewCell
         
         let post = posts[indexPath.row]
-        cell.updateViews(post: post)
+        cell.post = post
         
         return cell
     }
