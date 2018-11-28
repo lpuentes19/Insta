@@ -75,6 +75,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return 510
     }
     
+    @IBAction func commentButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "toCommentsVC", sender: self)
+    }
+    
     @IBAction func logoutButtonTapped(_ sender: Any) {
         
         do {
