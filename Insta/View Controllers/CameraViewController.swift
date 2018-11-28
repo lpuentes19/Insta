@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 import JGProgressHUD
@@ -73,7 +74,9 @@ class CameraViewController: UIViewController {
         let postReference = ref.child("posts")
         if let postID = postReference.childByAutoId().key {
             let newPostReference = postReference.child(postID)
-            newPostReference.setValue(["caption": captionTextView.text!,"postImageURL": postImageURL]) { (error, ref) in
+            guard let currentUser = Auth.auth().currentUser else { return }
+            let currentUserID = currentUser.uid
+            newPostReference.setValue(["uid": currentUserID, "caption": captionTextView.text!,"postImageURL": postImageURL]) { (error, ref) in
                 if error != nil {
                     self.progressHUD.dismiss()
                     
