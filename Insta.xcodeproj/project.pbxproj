@@ -10,6 +10,7 @@
 		8AB1C2E4E7F6FB71143D940A /* Pods_InstaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D10C62A4A87367AED2557AB /* Pods_InstaTests.framework */; };
 		951F6908219B8B12004D6768 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F6907219B8B12004D6768 /* AuthManager.swift */; };
 		951F690A219BAFE4004D6768 /* FirebaseReferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F6909219BAFE4004D6768 /* FirebaseReferences.swift */; };
+		95A27C3E21AE232200823905 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A27C3D21AE232200823905 /* User.swift */; };
 		95B0F31D217AB76F008CB17B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0F31C217AB76F008CB17B /* SignUpViewController.swift */; };
 		95B0F320217BCAF1008CB17B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95B0F31F217BCAF1008CB17B /* Main.storyboard */; };
 		95D710A621A0919B00946EC1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D710A521A0919B00946EC1 /* Post.swift */; };
@@ -61,6 +62,7 @@
 		8E7E88EF333B6803560540CE /* Pods_Insta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Insta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		951F6907219B8B12004D6768 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		951F6909219BAFE4004D6768 /* FirebaseReferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseReferences.swift; sourceTree = "<group>"; };
+		95A27C3D21AE232200823905 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		95B0F31C217AB76F008CB17B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		95B0F31F217BCAF1008CB17B /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		95D710A521A0919B00946EC1 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				95D710A521A0919B00946EC1 /* Post.swift */,
+				95A27C3D21AE232200823905 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95A27C3E21AE232200823905 /* User.swift in Sources */,
 				95B0F31D217AB76F008CB17B /* SignUpViewController.swift in Sources */,
 				95D710A621A0919B00946EC1 /* Post.swift in Sources */,
 				951F6908219B8B12004D6768 /* AuthManager.swift in Sources */,
