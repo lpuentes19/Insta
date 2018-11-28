@@ -29,6 +29,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         loadPosts()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     func loadPosts() {
         activityIndicator.startAnimating()
         Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
@@ -76,7 +82,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func commentButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "toCommentsVC", sender: self)
+        performSegue(withIdentifier: "toCommentVC", sender: self)
     }
     
     @IBAction func logoutButtonTapped(_ sender: Any) {

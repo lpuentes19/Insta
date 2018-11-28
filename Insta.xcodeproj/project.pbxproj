@@ -11,8 +11,8 @@
 		951F6908219B8B12004D6768 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F6907219B8B12004D6768 /* AuthManager.swift */; };
 		951F690A219BAFE4004D6768 /* FirebaseReferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F6909219BAFE4004D6768 /* FirebaseReferences.swift */; };
 		95A27C3E21AE232200823905 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A27C3D21AE232200823905 /* User.swift */; };
-		95A27C4021AF00E600823905 /* CommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A27C3F21AF00E600823905 /* CommentTableViewController.swift */; };
 		95A27C4221AF085200823905 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A27C4121AF085200823905 /* CommentTableViewCell.swift */; };
+		95A27C4421AF5E6900823905 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A27C4321AF5E6900823905 /* CommentViewController.swift */; };
 		95B0F31D217AB76F008CB17B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0F31C217AB76F008CB17B /* SignUpViewController.swift */; };
 		95B0F320217BCAF1008CB17B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95B0F31F217BCAF1008CB17B /* Main.storyboard */; };
 		95D710A621A0919B00946EC1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D710A521A0919B00946EC1 /* Post.swift */; };
@@ -65,8 +65,8 @@
 		951F6907219B8B12004D6768 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		951F6909219BAFE4004D6768 /* FirebaseReferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseReferences.swift; sourceTree = "<group>"; };
 		95A27C3D21AE232200823905 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		95A27C3F21AF00E600823905 /* CommentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewController.swift; sourceTree = "<group>"; };
 		95A27C4121AF085200823905 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		95A27C4321AF5E6900823905 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		95B0F31C217AB76F008CB17B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		95B0F31F217BCAF1008CB17B /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		95D710A521A0919B00946EC1 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 				95E10D5021715C03000922C9 /* LoginViewController.swift */,
 				95B0F31C217AB76F008CB17B /* SignUpViewController.swift */,
 				95F4F53E21825EA8009A94E4 /* HomeViewController.swift */,
-				95A27C3F21AF00E600823905 /* CommentTableViewController.swift */,
+				95A27C4321AF5E6900823905 /* CommentViewController.swift */,
 				95F4F54021825EBF009A94E4 /* DiscoverViewController.swift */,
 				95F4F54221825ED2009A94E4 /* CameraViewController.swift */,
 				95F4F54421825EE2009A94E4 /* ActivityViewController.swift */,
@@ -521,11 +521,11 @@
 				95D710A621A0919B00946EC1 /* Post.swift in Sources */,
 				951F6908219B8B12004D6768 /* AuthManager.swift in Sources */,
 				95E10D5121715C03000922C9 /* LoginViewController.swift in Sources */,
+				95A27C4421AF5E6900823905 /* CommentViewController.swift in Sources */,
 				95E10D2221715554000922C9 /* AppDelegate.swift in Sources */,
 				95F4F53F21825EA8009A94E4 /* HomeViewController.swift in Sources */,
 				95A27C4221AF085200823905 /* CommentTableViewCell.swift in Sources */,
 				95D710A921A0AA3200946EC1 /* HomeTableViewCell.swift in Sources */,
-				95A27C4021AF00E600823905 /* CommentTableViewController.swift in Sources */,
 				95F4F54521825EE2009A94E4 /* ActivityViewController.swift in Sources */,
 				951F690A219BAFE4004D6768 /* FirebaseReferences.swift in Sources */,
 				95F4F54121825EBF009A94E4 /* DiscoverViewController.swift in Sources */,
