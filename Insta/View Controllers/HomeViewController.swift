@@ -14,6 +14,7 @@ import SDWebImage
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var posts = [Post]()
     var users = [User]()
@@ -29,11 +30,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func loadPosts() {
+        activityIndicator.startAnimating()
         Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
             if let dict = snapshot.value as? [String: Any] {
                 let post = Post.decodePhotoPost(dict: dict)
                 self.fetchUser(uid: post.uid!, completion: {
                     self.posts.append(post)
+                    self.activityIndicator.stopAnimating()
                     self.tableView.reloadData()
                 })
             }
