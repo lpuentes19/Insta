@@ -21,6 +21,8 @@ class CommentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        handleTextField()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,8 +31,28 @@ class CommentViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
     }
     
+    func handleTextField() {
+        sendButton.isEnabled = false
+        sendButton.setTitleColor(UIColor.lightText, for: .normal)
+        
+        commentTextField.addTarget(self, action: #selector(CommentViewController.textFieldDidChange), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange() {
+        guard let comment = commentTextField.text, !comment.isEmpty else {
+            sendButton.setTitleColor(UIColor.lightText, for: .normal)
+            sendButton.isEnabled = false
+            
+            return
+        }
+        sendButton.setTitleColor(UIColor.white, for: .normal)
+        sendButton.isEnabled = true
+    }
+    
     func clear() {
         commentTextField.text = ""
+        sendButton.isEnabled = false
+        sendButton.setTitleColor(UIColor.lightText, for: .normal)
     }
     
     @IBAction func sendButtonTapped(_ sender: Any) {

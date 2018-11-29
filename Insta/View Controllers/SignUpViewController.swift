@@ -27,7 +27,6 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
-        signUpButton.isEnabled = false
         handleTextField()
         
 //        Timer.scheduledTimer(timeInterval: 0.30, target: self, selector: #selector(animateTextFieldLayer), userInfo: nil, repeats: false)
@@ -153,6 +152,9 @@ class SignUpViewController: UIViewController {
     }
     
     func handleTextField() {
+        signUpButton.setTitleColor(UIColor.lightText, for: .normal)
+        signUpButton.isEnabled = false
+        
         usernameTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: .editingChanged)
         emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: .editingChanged)
