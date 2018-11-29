@@ -10,6 +10,7 @@
 		8AB1C2E4E7F6FB71143D940A /* Pods_InstaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D10C62A4A87367AED2557AB /* Pods_InstaTests.framework */; };
 		951F6908219B8B12004D6768 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F6907219B8B12004D6768 /* AuthManager.swift */; };
 		951F690A219BAFE4004D6768 /* FirebaseReferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F6909219BAFE4004D6768 /* FirebaseReferences.swift */; };
+		95706B4921B0501800B16B21 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95706B4821B0501800B16B21 /* Comment.swift */; };
 		95A27C3E21AE232200823905 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A27C3D21AE232200823905 /* User.swift */; };
 		95A27C4221AF085200823905 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A27C4121AF085200823905 /* CommentTableViewCell.swift */; };
 		95A27C4421AF5E6900823905 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A27C4321AF5E6900823905 /* CommentViewController.swift */; };
@@ -64,6 +65,7 @@
 		8E7E88EF333B6803560540CE /* Pods_Insta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Insta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		951F6907219B8B12004D6768 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		951F6909219BAFE4004D6768 /* FirebaseReferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseReferences.swift; sourceTree = "<group>"; };
+		95706B4821B0501800B16B21 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		95A27C3D21AE232200823905 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		95A27C4121AF085200823905 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		95A27C4321AF5E6900823905 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				95D710A521A0919B00946EC1 /* Post.swift */,
 				95A27C3D21AE232200823905 /* User.swift */,
+				95706B4821B0501800B16B21 /* Comment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				95A27C4221AF085200823905 /* CommentTableViewCell.swift in Sources */,
 				95D710A921A0AA3200946EC1 /* HomeTableViewCell.swift in Sources */,
 				95F4F54521825EE2009A94E4 /* ActivityViewController.swift in Sources */,
+				95706B4921B0501800B16B21 /* Comment.swift in Sources */,
 				951F690A219BAFE4004D6768 /* FirebaseReferences.swift in Sources */,
 				95F4F54121825EBF009A94E4 /* DiscoverViewController.swift in Sources */,
 				95F4F54721825EF5009A94E4 /* ProfileViewController.swift in Sources */,

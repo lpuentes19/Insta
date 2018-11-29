@@ -164,7 +164,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g9g-bk-kJG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g9g-bk-kJG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="605"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -172,7 +172,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0cV-39-ysY" id="xTO-6o-e6x">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oG4-gK-Oej">
@@ -189,20 +189,28 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCO-hy-NVo">
-                                                    <rect key="frame" x="59" y="46.5" width="308" height="18"/>
+                                                    <rect key="frame" x="59" y="47" width="308" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Es-9Y-yh6">
+                                                    <rect key="frame" x="15" y="73" width="360" height="2"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="6Es-9Y-yh6" firstAttribute="top" secondItem="gCO-hy-NVo" secondAttribute="bottom" constant="8" id="B9b-0O-BcR"/>
+                                                <constraint firstItem="gCO-hy-NVo" firstAttribute="top" secondItem="Pn8-RV-keM" secondAttribute="bottom" constant="7" id="FmE-SD-ZjB"/>
                                                 <constraint firstItem="Pn8-RV-keM" firstAttribute="leading" secondItem="oG4-gK-Oej" secondAttribute="trailing" constant="8" id="IT7-cf-UdG"/>
-                                                <constraint firstAttribute="bottom" secondItem="gCO-hy-NVo" secondAttribute="bottom" constant="15" id="VvK-zR-QQ1"/>
+                                                <constraint firstAttribute="trailing" secondItem="6Es-9Y-yh6" secondAttribute="trailing" id="Q9h-xz-3mK"/>
+                                                <constraint firstItem="6Es-9Y-yh6" firstAttribute="leading" secondItem="xTO-6o-e6x" secondAttribute="leading" constant="15" id="Ukk-Jc-GAw"/>
                                                 <constraint firstItem="gCO-hy-NVo" firstAttribute="leading" secondItem="oG4-gK-Oej" secondAttribute="trailing" constant="8" id="X6e-3L-apg"/>
                                                 <constraint firstAttribute="trailing" secondItem="gCO-hy-NVo" secondAttribute="trailing" constant="8" id="Xee-yw-ZdK"/>
                                                 <constraint firstItem="oG4-gK-Oej" firstAttribute="top" secondItem="xTO-6o-e6x" secondAttribute="topMargin" constant="8" id="Zat-DX-cLf"/>
                                                 <constraint firstItem="Pn8-RV-keM" firstAttribute="top" secondItem="oG4-gK-Oej" secondAttribute="top" id="dsP-Tx-Ugh"/>
                                                 <constraint firstItem="oG4-gK-Oej" firstAttribute="leading" secondItem="xTO-6o-e6x" secondAttribute="leadingMargin" id="hQu-Hl-ofZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="6Es-9Y-yh6" secondAttribute="bottom" constant="5" id="jJ2-IW-zFo"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

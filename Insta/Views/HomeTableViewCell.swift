@@ -61,7 +61,6 @@ class HomeTableViewCell: UITableViewCell {
             let imageURL = URL(string: imageURLString)
             postImageView.sd_setImage(with: imageURL, completed: nil)
         }
-        setupUserInfo()
     }
     
     func setupUserInfo() {
