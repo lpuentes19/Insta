@@ -80,7 +80,7 @@ class CameraViewController: UIViewController {
                 if error != nil {
                     self.progressHUD.dismiss()
                     
-                    self.errorHUD.textLabel.text = "\(error)"
+                    self.errorHUD.textLabel.text = "\(error!.localizedDescription)"
                     self.errorHUD.tintColor = .red
                     self.errorHUD.indicatorView = JGProgressHUDErrorIndicatorView()
                     self.errorHUD.show(in: self.view)
