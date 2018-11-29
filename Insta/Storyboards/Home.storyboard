@@ -268,7 +268,7 @@
                             <constraint firstItem="g9g-bk-kJG" firstAttribute="leading" secondItem="ADN-GC-Mb5" secondAttribute="leading" id="Ou1-nh-VEV"/>
                             <constraint firstItem="fGY-Qn-gtU" firstAttribute="leading" secondItem="ADN-GC-Mb5" secondAttribute="leading" id="Znt-t3-cxz"/>
                             <constraint firstItem="fGY-Qn-gtU" firstAttribute="trailing" secondItem="ADN-GC-Mb5" secondAttribute="trailing" id="ggw-kd-6LE"/>
-                            <constraint firstItem="fGY-Qn-gtU" firstAttribute="bottom" secondItem="ADN-GC-Mb5" secondAttribute="bottom" id="hUh-r0-0c9"/>
+                            <constraint firstItem="fGY-Qn-gtU" firstAttribute="bottom" secondItem="k5T-gX-ZZT" secondAttribute="bottom" id="hUh-r0-0c9"/>
                             <constraint firstItem="g9g-bk-kJG" firstAttribute="trailing" secondItem="ADN-GC-Mb5" secondAttribute="trailing" id="qbr-8O-5Pv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ADN-GC-Mb5"/>
@@ -276,6 +276,7 @@
                     <navigationItem key="navigationItem" title="Comments" id="Qfv-vo-iSU"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bottomCommentViewConstraint" destination="hUh-r0-0c9" id="k94-Qi-CFT"/>
                         <outlet property="commentTextField" destination="bOZ-gb-2FS" id="yxH-iz-V7M"/>
                         <outlet property="sendButton" destination="mir-Rj-eeB" id="hYR-ye-7jv"/>
                         <outlet property="tableView" destination="g9g-bk-kJG" id="Ne1-Ct-RKI"/>

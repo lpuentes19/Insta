@@ -17,6 +17,8 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     
+    @IBOutlet weak var bottomCommentViewConstraint: NSLayoutConstraint!
+    
     var comments = [Comment]()
     var users = [User]()
     
@@ -32,6 +34,10 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         
         handleTextField()
         loadComments()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,6 +90,22 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         sendButton.isEnabled = true
     }
     
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue {
+            UIView.animate(withDuration: 0.3) {
+                self.bottomCommentViewConstraint.constant = -(keyboardFrame.height)
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        UIView.animate(withDuration: 0.3) {
+            self.bottomCommentViewConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     func clear() {
         commentTextField.text = ""
         sendButton.isEnabled = false
@@ -109,6 +131,10 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - TableViewDelegateMethods
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        view.endEditing(true)
     }
     
     @IBAction func sendButtonTapped(_ sender: Any) {
@@ -138,6 +164,7 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
                         return
                     }
                     self.clear()
+                    self.view.endEditing(true)
                 })
             }
         }
