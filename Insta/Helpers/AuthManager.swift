@@ -13,6 +13,16 @@ import FirebaseDatabase
 
 class AuthManager {
     
+    static var currentUser = Auth.auth().currentUser
+    
+    static func signOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch let logoutError {
+            print(logoutError)
+        }
+    }
+    
     static func signInWith(email: String, password: String, onError: @escaping (String) -> Void, onSuccess: @escaping () -> Void) {
         
         Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
@@ -32,7 +42,7 @@ class AuthManager {
                 return
             }
             guard let uid = user?.user.uid else { return }
-            let storageRef = Storage.storage().reference(forURL: FirebaseReferences.rootStorageReference).child("profile_image").child(uid)
+            let storageRef = FirebaseReferences.rootStorageReference.child("profile_image").child(uid)
             storageRef.putData(imageData, metadata: nil, completion: { (metaData, error) in
                 if error != nil {
                     onError(error!.localizedDescription)
@@ -47,8 +57,7 @@ class AuthManager {
     }
     
     static func setupUserInformation(profileImageURL: String, username: String, email: String, password: String, uid: String, onSuccess: @escaping () -> Void) {
-        let ref = Database.database().reference()
-        let userReference = ref.child("users")
+        let userReference = FirebaseReferences.usersDatabaseReference
         let newUserReference = userReference.child(uid)
         newUserReference.setValue(["username": username, "email": email, "profileImage": profileImageURL])
         

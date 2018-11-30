@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
 import JGProgressHUD
 
 class CommentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -55,9 +53,9 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func loadComments() {
         guard let key = postID else { return }
-        let postCommentRef = Database.database().reference().child("post-comments").child(key)
+        let postCommentRef = FirebaseReferences.postCommentsDatabaseReference.child(key)
         postCommentRef.observe(.childAdded, with: { (snapshot) in
-            Database.database().reference().child("comments").child(snapshot.key).observeSingleEvent(of: .value, with: { (snapshotComment) in
+            FirebaseReferences.commentsDatabaseReference.child(snapshot.key).observeSingleEvent(of: .value, with: { (snapshotComment) in
                 if let dict = snapshotComment.value as? [String: Any] {
                     let newComment = Comment.decodeComment(dict: dict)
                     self.fetchUser(uid: newComment.uid!, completion: {
@@ -70,7 +68,7 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func fetchUser(uid: String, completion: @escaping () -> Void) {
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+        FirebaseReferences.usersDatabaseReference.child(uid).observeSingleEvent(of: .value) { (snapshot) in
             if let dict = snapshot.value as? [String: Any] {
                 let user = User.decodeUser(dict: dict)
                 self.users.append(user)
@@ -146,11 +144,10 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func sendButtonTapped(_ sender: Any) {
-        let ref = Database.database().reference()
-        let commentReference = ref.child("comments")
+        let commentReference = FirebaseReferences.commentsDatabaseReference
         if let commentID = commentReference.childByAutoId().key {
             let newCommentReference = commentReference.child(commentID)
-            guard let currentUser = Auth.auth().currentUser else { return }
+            guard let currentUser = AuthManager.currentUser else { return }
             let currentUserID = currentUser.uid
             newCommentReference.setValue(["uid": currentUserID, "comment": commentTextField.text!]) { (error, ref) in
                 if error != nil {
@@ -162,7 +159,7 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
                     return
                 }
                 guard let key = self.postID else { return }
-                let postCommentRef = Database.database().reference().child("post-comments").child(key).child(commentID)
+                let postCommentRef = FirebaseReferences.postCommentsDatabaseReference.child(key).child(commentID)
                 postCommentRef.setValue(true, withCompletionBlock: { (error, ref) in
                     if error != nil {
                         self.errorHUD.textLabel.text = "\(error!.localizedDescription)"

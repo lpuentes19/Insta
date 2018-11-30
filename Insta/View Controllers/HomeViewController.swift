@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
 import SDWebImage
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -31,7 +29,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func loadPosts() {
         activityIndicator.startAnimating()
-        Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
+        FirebaseReferences.postsDatabaseReference.observe(.childAdded) { (snapshot) in
             if let dict = snapshot.value as? [String: Any] {
                 let post = Post.decodePhotoPost(dict: dict, key: snapshot.key)
                 self.fetchUser(uid: post.uid!, completion: {
@@ -44,7 +42,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func fetchUser(uid: String, completion: @escaping () -> Void) {
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+        FirebaseReferences.usersDatabaseReference.child(uid).observeSingleEvent(of: .value) { (snapshot) in
             if let dict = snapshot.value as? [String: Any] {
                 let user = User.decodeUser(dict: dict)
                 self.users.append(user)
@@ -84,12 +82,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func logoutButtonTapped(_ sender: Any) {
+        AuthManager.signOut()
         
-        do {
-            try Auth.auth().signOut()
-        } catch let logoutError {
-            print(logoutError)
-        }
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
         self.present(loginVC, animated: true, completion: nil)

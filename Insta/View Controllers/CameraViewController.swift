@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
-import FirebaseStorage
 import JGProgressHUD
 
 class CameraViewController: UIViewController {
@@ -22,6 +19,7 @@ class CameraViewController: UIViewController {
     let progressHUD = JGProgressHUD(style: .dark)
     let errorHUD = JGProgressHUD(style: .dark)
     let successHUD = JGProgressHUD(style: .dark)
+    
     var selectedImage: UIImage?
     
     override func viewDidLoad() {
@@ -70,11 +68,10 @@ class CameraViewController: UIViewController {
     }
     
     func sendImageDataToDatabase(postImageURL: String) {
-        let ref = Database.database().reference()
-        let postReference = ref.child("posts")
+        let postReference = FirebaseReferences.postsDatabaseReference
         if let postID = postReference.childByAutoId().key {
             let newPostReference = postReference.child(postID)
-            guard let currentUser = Auth.auth().currentUser else { return }
+            guard let currentUser = AuthManager.currentUser else { return }
             let currentUserID = currentUser.uid
             newPostReference.setValue(["uid": currentUserID, "caption": captionTextView.text!,"postImageURL": postImageURL]) { (error, ref) in
                 if error != nil {
@@ -110,10 +107,10 @@ class CameraViewController: UIViewController {
         progressHUD.show(in: self.view)
         if let profileImage = self.selectedImage, let imageData = profileImage.jpegData(compressionQuality: 0.1) {
             let imageID = UUID().uuidString
-            let storageRef = Storage.storage().reference(forURL: FirebaseReferences.rootStorageReference).child("posts").child(imageID)
+            let storageRef = FirebaseReferences.rootStorageReference.child("posts").child(imageID)
             storageRef.putData(imageData, metadata: nil, completion: { (metaData, error) in
                 if error != nil {
-                    self.errorHUD.textLabel.text = "\(error)"
+                    self.errorHUD.textLabel.text = "\(error!.localizedDescription)"
                     self.errorHUD.tintColor = .red
                     self.errorHUD.indicatorView = JGProgressHUDErrorIndicatorView()
                     self.errorHUD.show(in: self.view)

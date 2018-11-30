@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 import JGProgressHUD
 
 class LoginViewController: UIViewController {
@@ -46,7 +45,7 @@ class LoginViewController: UIViewController {
         super.viewDidAppear(animated)
         
         // Checking to see if the user is still logged in
-        if Auth.auth().currentUser != nil {
+        if AuthManager.currentUser != nil {
             performSegue(withIdentifier: "SignInComplete", sender: self)
         }
     }
