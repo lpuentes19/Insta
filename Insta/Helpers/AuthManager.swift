@@ -8,8 +8,6 @@
 
 import Foundation
 import FirebaseAuth
-import FirebaseStorage
-import FirebaseDatabase
 
 class AuthManager {
     
