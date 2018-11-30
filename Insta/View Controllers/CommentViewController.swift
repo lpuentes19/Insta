@@ -21,9 +21,10 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var comments = [Comment]()
     var users = [User]()
+    var postID: String?
     
     let errorHUD = JGProgressHUD(style: .dark)
-    let postID = "-LSMpmwvnmmMHPUClQJ0"
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +47,15 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         tabBarController?.tabBar.isHidden = true
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     func loadComments() {
-        let postCommentRef = Database.database().reference().child("post-comments").child(self.postID)
+        guard let key = postID else { return }
+        let postCommentRef = Database.database().reference().child("post-comments").child(key)
         postCommentRef.observe(.childAdded, with: { (snapshot) in
             Database.database().reference().child("comments").child(snapshot.key).observeSingleEvent(of: .value, with: { (snapshotComment) in
                 if let dict = snapshotComment.value as? [String: Any] {
@@ -153,7 +161,8 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.errorHUD.dismiss(afterDelay: 3.0)
                     return
                 }
-                let postCommentRef = Database.database().reference().child("post-comments").child(self.postID).child(commentID)
+                guard let key = self.postID else { return }
+                let postCommentRef = Database.database().reference().child("post-comments").child(key).child(commentID)
                 postCommentRef.setValue(true, withCompletionBlock: { (error, ref) in
                     if error != nil {
                         self.errorHUD.textLabel.text = "\(error!.localizedDescription)"

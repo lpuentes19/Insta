@@ -62,7 +62,6 @@
                                                             <rect key="frame" x="43.5" y="0.0" width="28" height="25"/>
                                                             <state key="normal" image="Comment"/>
                                                             <connections>
-                                                                <action selector="commentButtonTapped:" destination="Onl-Qt-fYB" eventType="touchUpInside" id="AQ0-gH-jzc"/>
                                                                 <action selector="commentButtonTapped:" destination="aoX-DL-mSv" eventType="touchUpInside" id="KEq-78-J0d"/>
                                                             </connections>
                                                         </button>

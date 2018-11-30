@@ -29,17 +29,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         loadPosts()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tabBarController?.tabBar.isHidden = false
-    }
-    
     func loadPosts() {
         activityIndicator.startAnimating()
         Database.database().reference().child("posts").observe(.childAdded) { (snapshot) in
             if let dict = snapshot.value as? [String: Any] {
-                let post = Post.decodePhotoPost(dict: dict)
+                let post = Post.decodePhotoPost(dict: dict, key: snapshot.key)
                 self.fetchUser(uid: post.uid!, completion: {
                     self.posts.append(post)
                     self.activityIndicator.stopAnimating()
@@ -70,6 +64,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let post = posts[indexPath.row]
         let user = users[indexPath.row]
         
+        cell.homeViewVC = self
         cell.post = post
         cell.user = user
         
@@ -81,8 +76,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return 510
     }
     
-    @IBAction func commentButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "toCommentVC", sender: self)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toCommentVC" {
+            guard let commentVC = segue.destination as? CommentViewController else { return }
+            commentVC.postID = sender as? String
+        }
     }
     
     @IBAction func logoutButtonTapped(_ sender: Any) {

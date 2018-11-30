@@ -19,6 +19,8 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
     
+    var homeViewVC: HomeViewController?
+    
     var post: Post? {
         didSet {
             updateViews()
@@ -75,7 +77,11 @@ class HomeTableViewCell: UITableViewCell {
     
     @IBAction func likeButtonTapped(_ sender: Any) {
     }
+    
     @IBAction func commentButtonTapped(_ sender: Any) {
+        if let postID = post?.postID, let homeVC = homeViewVC {
+            homeVC.performSegue(withIdentifier: "toCommentVC", sender: postID)
+        }
     }
     @IBAction func shareButtonTapped(_ sender: Any) {
     }
