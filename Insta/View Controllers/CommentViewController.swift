@@ -55,26 +55,20 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         guard let key = postID else { return }
         let postCommentRef = FirebaseReferences.postCommentsDatabaseReference.child(key)
         postCommentRef.observe(.childAdded, with: { (snapshot) in
-            FirebaseReferences.commentsDatabaseReference.child(snapshot.key).observeSingleEvent(of: .value, with: { (snapshotComment) in
-                if let dict = snapshotComment.value as? [String: Any] {
-                    let newComment = Comment.decodeComment(dict: dict)
-                    self.fetchUser(uid: newComment.uid!, completion: {
-                        self.comments.append(newComment)
-                        self.tableView.reloadData()
-                    })
-                }
+            
+            CommentManager.observeComments(withPostID: snapshot.key, completion: { (comment) in
+                self.fetchUser(uid: comment.uid!, completion: {
+                    self.comments.append(comment)
+                    self.tableView.reloadData()
+                })
             })
         })
     }
     
     func fetchUser(uid: String, completion: @escaping () -> Void) {
-        FirebaseReferences.usersDatabaseReference.child(uid).observeSingleEvent(of: .value) { (snapshot) in
-            if let dict = snapshot.value as? [String: Any] {
-                let user = User.decodeUser(dict: dict)
-                self.users.append(user)
-                
-                completion()
-            }
+        UserManager.observerUser(withID: uid) { (user) in
+            self.users.append(user)
+            completion()
         }
     }
     
