@@ -10,7 +10,7 @@ import Foundation
 
 class PostManager {
     
-    func observePosts(completion: @escaping (Post) -> Void) {
+    static func observePosts(completion: @escaping (Post) -> Void) {
         FirebaseReferences.postsDatabaseReference.observe(.childAdded) { (snapshot) in
             if let dict = snapshot.value as? [String: Any] {
                 let newPost = Post.decodePhotoPost(dict: dict, key: snapshot.key)

@@ -29,7 +29,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func loadPosts() {
         activityIndicator.startAnimating()
-        PostManager().observePosts { (post) in
+        PostManager.observePosts { (post) in
             self.fetchUser(uid: post.uid!, completion: {
                 self.posts.append(post)
                 self.activityIndicator.stopAnimating()
@@ -39,7 +39,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func fetchUser(uid: String, completion: @escaping () -> Void) {
-        UserManager().observerUser(withID: uid) { (user) in
+        UserManager.observerUser(withID: uid) { (user) in
             self.users.append(user)
             completion()
         }

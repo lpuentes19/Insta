@@ -10,7 +10,7 @@ import Foundation
 
 class UserManager {
     
-    func observerUser(withID uid: String, completion: @escaping (User) -> Void) {
+    static func observerUser(withID uid: String, completion: @escaping (User) -> Void) {
         FirebaseReferences.usersDatabaseReference.child(uid).observeSingleEvent(of: .value) { (snapshot) in
             if let dict = snapshot.value as? [String: Any] {
                 let user = User.decodeUser(dict: dict)
