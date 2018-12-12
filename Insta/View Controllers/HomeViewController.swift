@@ -39,13 +39,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func fetchUser(uid: String, completion: @escaping () -> Void) {
-        FirebaseReferences.usersDatabaseReference.child(uid).observeSingleEvent(of: .value) { (snapshot) in
-            if let dict = snapshot.value as? [String: Any] {
-                let user = User.decodeUser(dict: dict)
-                self.users.append(user)
-                
-                completion()
-            }
+        UserManager().observerUser(withID: uid) { (user) in
+            self.users.append(user)
+            completion()
         }
     }
     
