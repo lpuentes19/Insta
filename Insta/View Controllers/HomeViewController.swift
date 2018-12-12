@@ -29,15 +29,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func loadPosts() {
         activityIndicator.startAnimating()
-        FirebaseReferences.postsDatabaseReference.observe(.childAdded) { (snapshot) in
-            if let dict = snapshot.value as? [String: Any] {
-                let post = Post.decodePhotoPost(dict: dict, key: snapshot.key)
-                self.fetchUser(uid: post.uid!, completion: {
-                    self.posts.append(post)
-                    self.activityIndicator.stopAnimating()
-                    self.tableView.reloadData()
-                })
-            }
+        PostManager().observePosts { (post) in
+            self.fetchUser(uid: post.uid!, completion: {
+                self.posts.append(post)
+                self.activityIndicator.stopAnimating()
+                self.tableView.reloadData()
+            })
         }
     }
     

@@ -36,6 +36,7 @@
 		95F4F54521825EE2009A94E4 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4F54421825EE2009A94E4 /* ActivityViewController.swift */; };
 		95F4F54721825EF5009A94E4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4F54621825EF5009A94E4 /* ProfileViewController.swift */; };
 		95F4F5782187CDED009A94E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95F4F5772187CDED009A94E4 /* GoogleService-Info.plist */; };
+		95F9936321C1968F00526EF5 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F9936221C1968F00526EF5 /* PostManager.swift */; };
 		BB4858413F55E57033020A23 /* Pods_Insta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E7E88EF333B6803560540CE /* Pods_Insta.framework */; };
 		E86C02F66B02A50C78B4D70D /* Pods_InstaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70FA1A592D58224ED7ED9119 /* Pods_InstaUITests.framework */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,7 @@
 		95F4F54421825EE2009A94E4 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		95F4F54621825EF5009A94E4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		95F4F5772187CDED009A94E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		95F9936221C1968F00526EF5 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		9FE22807F7A302FD54F2A4F5 /* Pods-Insta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Insta.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Insta/Pods-Insta.debug.xcconfig"; sourceTree = "<group>"; };
 		AEE4D95C4C40B8276DBFC445 /* Pods-InstaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstaUITests/Pods-InstaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C8B92B2F8B44A202DB699474 /* Pods-Insta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Insta.release.xcconfig"; path = "Pods/Target Support Files/Pods-Insta/Pods-Insta.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				951F6907219B8B12004D6768 /* AuthManager.swift */,
+				95F9936221C1968F00526EF5 /* PostManager.swift */,
 				951F6909219BAFE4004D6768 /* FirebaseReferences.swift */,
 			);
 			path = Helpers;
@@ -520,6 +523,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95A27C3E21AE232200823905 /* User.swift in Sources */,
+				95F9936321C1968F00526EF5 /* PostManager.swift in Sources */,
 				95B0F31D217AB76F008CB17B /* SignUpViewController.swift in Sources */,
 				95D710A621A0919B00946EC1 /* Post.swift in Sources */,
 				951F6908219B8B12004D6768 /* AuthManager.swift in Sources */,
