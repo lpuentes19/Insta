@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class HomeTableViewCell: UITableViewCell {
     
@@ -32,6 +33,8 @@ class HomeTableViewCell: UITableViewCell {
             setupUserInfo()
         }
     }
+    
+    var postRef: DatabaseReference?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -63,6 +66,33 @@ class HomeTableViewCell: UITableViewCell {
             let imageURL = URL(string: imageURLString)
             postImageView.sd_setImage(with: imageURL, completed: nil)
         }
+        guard let postID = post.postID else { return }
+        updateLike(post: post)
+        FirebaseReferences.postsDatabaseReference.child(postID).observe(.childChanged) { (snapshot) in
+            if let value = snapshot.value as? Int {
+                
+                if value == 1 {
+                    self.likeCountLabel.text = "\(value) like"
+                } else if value > 1 {
+                    self.likeCountLabel.text = "\(value) likes"
+                } else {
+                    self.likeCountLabel.text = "Be the first to like this."
+                }
+            }
+        }
+    }
+    
+    func updateLike(post: Post) {
+        let imageName = post.isLiked == nil || !post.isLiked! ? "like": "likeSelected"
+        likeButton.setImage(UIImage(named: imageName), for: .normal)
+        guard let likeCount = post.likeCount else { return }
+        if likeCount == 1 {
+            likeCountLabel.text = "\(likeCount) like"
+        } else if likeCount > 1 {
+            likeCountLabel.text = "\(likeCount) likes"
+        } else {
+            likeCountLabel.text = "Be the first to like this."
+        }
     }
     
     func setupUserInfo() {
@@ -75,7 +105,49 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
+    func incrementLikes(forRef ref: DatabaseReference) {
+        ref.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
+            if var post = currentData.value as? [String : AnyObject], let uid = AuthManager.currentUser?.uid {
+                var likes: Dictionary<String, Bool>
+                likes = post["likes"] as? [String : Bool] ?? [:]
+                var likeCounter = post["likeCounter"] as? Int ?? 0
+                // If the current user currently likes the post, unlike
+                // Else like the post
+                if let _ = likes[uid] {
+                    // Unlike the post and remove self from likes
+                    likeCounter -= 1
+                    likes.removeValue(forKey: uid)
+                } else {
+                    // Like the post and add self to likes
+                    likeCounter += 1
+                    likes[uid] = true
+                }
+                post["likeCounter"] = likeCounter as AnyObject?
+                post["likes"] = likes as AnyObject?
+                
+                // Set value and report transaction success
+                currentData.value = post
+                
+                return TransactionResult.success(withValue: currentData)
+            }
+            return TransactionResult.success(withValue: currentData)
+        }) { (error, committed, snapshot) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            if let dict = snapshot?.value as? [String: Any] {
+                let post = Post.decodePhotoPost(dict: dict, key: snapshot!.key)
+                self.updateLike(post: post)
+            }
+        }
+    }
+    
     @IBAction func likeButtonTapped(_ sender: Any) {
+        guard let postID = post?.postID else { return }
+        postRef = FirebaseReferences.postsDatabaseReference.child(postID)
+        if let postRef = postRef {
+            incrementLikes(forRef: postRef)
+        }
     }
     
     @IBAction func commentButtonTapped(_ sender: Any) {
@@ -83,6 +155,7 @@ class HomeTableViewCell: UITableViewCell {
             homeVC.performSegue(withIdentifier: "toCommentVC", sender: postID)
         }
     }
+    
     @IBAction func shareButtonTapped(_ sender: Any) {
     }
 }

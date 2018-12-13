@@ -13,6 +13,9 @@ class Post {
     var imageURLString: String?
     var uid: String?
     var postID: String?
+    var isLiked: Bool?
+    var likeCount: Int?
+    var likes: Dictionary<String, Any>?
     
     static func decodePhotoPost(dict: [String: Any], key: String) -> Post {
         let post = Post()
@@ -21,7 +24,17 @@ class Post {
         post.imageURLString = dict["postImageURL"] as? String
         post.uid = dict["uid"] as? String
         post.postID = key
+        post.likeCount = dict["likeCount"] as? Int
+        post.likes = dict["likes"] as? Dictionary<String, Any>
         
+        if let currentUserID = AuthManager.currentUser?.uid, let postLikes = post.likes {
+            if postLikes[currentUserID] != nil {
+                post.isLiked = true
+            } else {
+                post.isLiked = false
+            }
+            return post
+        }
         return post
     }
 }
