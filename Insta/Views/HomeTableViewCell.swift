@@ -60,17 +60,25 @@ class HomeTableViewCell: UITableViewCell {
     
     func updateViews() {
         guard let post = post else { return }
+        guard let postID = post.postID else { return }
         
         captionLabel.text = post.caption
         if let imageURLString = post.imageURLString {
             let imageURL = URL(string: imageURLString)
             postImageView.sd_setImage(with: imageURL, completed: nil)
         }
-        guard let postID = post.postID else { return }
-        updateLike(post: post)
+        // Observe new data and then update the post
+        // This helps when scrolling through multiple posts and getting
+        // It to show the most accurate data on each post
+        FirebaseReferences.postsDatabaseReference.child(postID).observeSingleEvent(of: .value) { (snapshot) in
+            if let dict = snapshot.value as? [String: Any] {
+                let post = Post.decodePhotoPost(dict: dict, key: snapshot.key)
+                self.updateLike(post: post)
+            }
+        }
+        // Observing likes and updating each post accordingly
         FirebaseReferences.postsDatabaseReference.child(postID).observe(.childChanged) { (snapshot) in
             if let value = snapshot.value as? Int {
-                
                 if value == 1 {
                     self.likeCountLabel.text = "\(value) like"
                 } else if value > 1 {
